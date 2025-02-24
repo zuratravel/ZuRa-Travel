@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Carter Mobil</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        form { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
+        label { display: block; margin-top: 10px; }
+        input, select, textarea { width: 100%; padding: 8px; margin-top: 5px; }
+        button { margin-top: 15px; padding: 10px; background: #28a745; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">Formulir Pemesanan Carter Mobil</h2>
+    <form id="bookingForm">
+        <label for="name">Nama:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="date">Tanggal Sewa:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="duration">Durasi Sewa:</label>
+        <select id="duration" name="duration">
+            <option value="4 Jam">4 Jam</option>
+            <option value="8 Jam">8 Jam</option>
+            <option value="12 Jam">12 Jam</option>
+            <option value="24 Jam">24 Jam</option>
+        </select>
+
+        <label for="pickup">Lokasi Penjemputan:</label>
+        <input type="text" id="pickup" name="pickup" required>
+
+        <label for="destination">Lokasi Tujuan:</label>
+        <input type="text" id="destination" name="destination" required>
+
+        <button type="button" onclick="sendToWhatsApp()">Pesan via WhatsApp</button>
+    </form>
+
+    <script>
+        function sendToWhatsApp() {
+            let name = document.getElementById('name').value;
+            let date = document.getElementById('date').value;
+            let duration = document.getElementById('duration').value;
+            let pickup = document.getElementById('pickup').value;
+            let destination = document.getElementById('destination').value;
+            
+            let message = `Halo, saya ingin memesan carter mobil dengan detail berikut:%0A` +
+                `Nama: ${name}%0A` +
+                `Tanggal Sewa: ${date}%0A` +
+                `Durasi: ${duration}%0A` +
+                `Lokasi Penjemputan: ${pickup}%0A` +
+                `Lokasi Tujuan: ${destination}`;
+            
+            let phoneNumber = "6282211894402"; // Ganti dengan nomor WhatsApp bisnis
+            let whatsappURL = `https://wa.me/${082211894402}?text=${message}`;
+            
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+</body>
+</html>
